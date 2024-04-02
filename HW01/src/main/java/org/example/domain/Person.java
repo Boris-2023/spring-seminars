@@ -2,6 +2,7 @@ package org.example.domain;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -13,10 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
+    @SerializedName("id")
+    private long personId;
     private String firstName;
     private String lastName;
     private int age;
-    private long personId;
     private static long id = 0L;
     private static final List<Person> persons = new ArrayList<>();
 
@@ -25,10 +27,10 @@ public class Person {
 
 
     public Person(String firstName, String lastName, int age) {
+        this.personId = ++id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.personId = ++id;
 
         persons.add(this);
     }
@@ -94,9 +96,9 @@ public class Person {
      * @see Person#personsFromJSON(String)
      */
     public static List<Person> personsFromJSON(String gsonString) {
-        Type listOfMyClassObject = new TypeToken<ArrayList<Person>>() {
+        Type listOfPersonObject = new TypeToken<ArrayList<Person>>() {
         }.getType();
-        return new Gson().fromJson(gsonString, listOfMyClassObject);
+        return new Gson().fromJson(gsonString, listOfPersonObject);
     }
 
 
