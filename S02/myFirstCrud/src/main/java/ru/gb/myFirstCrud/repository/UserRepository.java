@@ -47,9 +47,30 @@ public class UserRepository {
     }
 
     public User getOne(int id) {
-        String sql = "SELECT * FROM userTable WHERE id=?";
-        return jdbc.queryForObject(sql, User.class, id);
+        String sql = "SELECT * FROM userTable";
+
+        RowMapper<User> userRowMapper = (r, i) -> {
+            User rowObject = new User();
+            rowObject.setId(r.getInt("id"));
+            rowObject.setFirstName(r.getString("firstName"));
+            rowObject.setLastName(r.getString("lastName"));
+            return rowObject;
+        };
+
+        User user = jdbc.query(sql, userRowMapper).stream()
+                .filter(x -> x.getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        System.out.println("\n" + user);
+        return user;
     }
 
+    public User update(int id) {
+        String sql = "UPDATE userTable SET firstName = ?, lastName = ?";
+        User user = getOne(id);
+        jdbc.update(sql, user.getFirstName(), user.getLastName());
+        return user;
+    }
 
 }

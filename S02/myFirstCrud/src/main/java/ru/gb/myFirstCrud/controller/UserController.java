@@ -43,4 +43,11 @@ public class UserController {
         return "redirect:/users";
     }
 
+    @GetMapping("/user-update/{id}")
+    public String getUser(@PathVariable("id") int id){
+        userService.getById(id);
+        return "redirect:/users";
+    }
+
+
 }
