@@ -1,0 +1,4 @@
+application:
+  name: myFirstCrud
+server:
+  port: 12345

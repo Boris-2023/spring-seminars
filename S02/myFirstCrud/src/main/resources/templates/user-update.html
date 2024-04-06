@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<meta charset="UTF-8">
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/style.css">
-<title>Create user</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="form-block">
-    <form  action="#" th:action="@{/user-update/*{id}}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
         <label class="form-label" for="id">ID</label>
         <input class="form-control" readonly type="number" th:field="*{id}" id="id" placeholder="ID">
         <br/>
