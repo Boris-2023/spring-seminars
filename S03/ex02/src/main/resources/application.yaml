@@ -1,0 +1,4 @@
+application:
+  name: ex02
+server:
+  port: 12345
