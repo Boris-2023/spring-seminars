@@ -1,0 +1,45 @@
+body {
+text-align: center;
+font-size: 25px;
+color: blue;
+font-family: 'Arial', sans-serif;
+background-color: PaleGreen;
+}
+
+h1 {
+text-align: center;
+font-size: 60px;
+color: black;
+}
+
+h2 {
+text-align: center;
+font-size: 35px;
+color: green;
+}
+
+.btn {
+height: 50px;
+width: 250px;
+padding: 8px;
+background-color: blue;
+color: white;
+margin-top: 30px;
+font-size: 20px;
+font-weight: 600;
+}
+
+.btn:hover {
+background-color: LightBlue;
+}
+
+.wrapper {
+display: grid;
+grid-template-columns: 250px 250px;
+gap: 10px;
+}
+
+form {
+margin: 0 auto;
+width: 590px;
+}
