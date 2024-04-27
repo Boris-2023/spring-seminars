@@ -16,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    // переопределение фильтра аутентификации, какие ресурсы доступны в зависимости от роли пользователя
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -34,11 +35,13 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // переопределение колировщика паролей, BCrypt & SCrypt
     @Bean
     PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+    // сохранение в памяти нескольких клиентов с их ролями, в зависимости от которых будут доступны ресурсы
     @Bean
     UserDetailsManager inMemoryUserDetailsManager() {
         var user1 = User.withUsername("user").password("{noop}password").roles("USER").build();
