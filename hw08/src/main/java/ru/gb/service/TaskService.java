@@ -32,6 +32,7 @@ public class TaskService {
                 .toList();
     }
 
+    @TrackUserAction
     public Task updateTaskStatus(Long id, Task task) {
         Optional<Task> optionalTask = repository.findById(id);
 
@@ -44,6 +45,7 @@ public class TaskService {
         }
     }
 
+    @TrackUserAction
     public void deleteTaskById(Long id) {
         Task task = repository.findById(id).orElseGet(null);
         if (task != null) repository.delete(task);
