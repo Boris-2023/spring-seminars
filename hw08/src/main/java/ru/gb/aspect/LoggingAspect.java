@@ -11,9 +11,9 @@ public class LoggingAspect {
 
     // перед методом с анно @TrackUserAction в консоль выводится его название
     @Before(value = "@annotation(TrackUserAction)")
-    public void beforeAdvice(JoinPoint pp) {
+    public void beforeAdvice(JoinPoint jp) {
         System.out.println("Method CALL detected: \n" +
-                "Method name = " + pp.getSignature().getName() + "()");
+                "Method name = " + jp.getSignature().getName() + "()");
     }
 
     // после того, как метод отработал, в консоль выводится результат его работы
