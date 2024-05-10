@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8765
 
 spring:
   application:
@@ -8,6 +8,6 @@ spring:
     gateway:
       routes:
         - id: Microservice1
-          uri: http://localhost:8081/
+          uri: http://localhost:8080/
           predicates:
             - Path=/tasks/**

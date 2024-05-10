@@ -2,4 +2,4 @@ spring:
   application:
     name: tasks
 server:
-  post: 8081
+  post: 8080
